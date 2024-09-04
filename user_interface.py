@@ -35,13 +35,6 @@ async def get(ctx: SlashContext, api_url, raw=False, show_everyone=False):
     # sort by id if id exists
     sorted_reply = sorted(reply, key=lambda x: x.get('id', float('inf')) if isinstance(x, dict) else float('inf'))
     await ctx.send(str(sorted_reply), ephemeral=not show_everyone)
-    # if raw:
-    #     await ctx.send(sorted_reply, ephemeral= not show_everyone)
-    # else:
-    #     msg = ''
-    #     for ele in sorted_reply:
-    #
-    #     await ctx.send(sorted_reply, ephemeral=not show_everyone)
 
 
 if __name__ == "__main__":
