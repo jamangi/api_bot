@@ -29,8 +29,7 @@ base_command = SlashCommand(
 
 @base_command.subcommand(sub_cmd_name="get", sub_cmd_description="Query an api")
 @slash_option(name="api_url", description="Provide an endpoint", opt_type=OptionType.STRING, required=True)
-@slash_option(name="raw", description="Disable formatting", opt_type=OptionType.BOOLEAN, required=False)
-async def get(ctx: SlashContext, api_url, raw=False, show_everyone=False):
+async def get(ctx: SlashContext, api_url, show_everyone=False):
     reply = get_request(api_url)
     # sort by id if id exists
     sorted_reply = sorted(reply, key=lambda x: x.get('id', float('inf')) if isinstance(x, dict) else float('inf'))
